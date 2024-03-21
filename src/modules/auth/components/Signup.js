@@ -19,8 +19,7 @@ function Signup() {
       });
       
       // Check if signup was successful
-      if (response.status === 201) {
-        // Navigate to the login page or any other page upon successful signup
+      if (response.status === 200) {
         navigate('/');
       } else {
         // Handle other status codes if needed
