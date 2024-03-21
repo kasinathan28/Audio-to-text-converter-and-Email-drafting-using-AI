@@ -10,14 +10,13 @@ function Index() {
       <div className='main'>
         <div className='left'>
           <div className='list'>
-            <h1>Dev-HUT</h1>
+            <h1>Dev-HUT 🧑‍💻</h1>
           </div>
           <div className='list2'>
             <div className='user'>
               <img src={Avatar} alt="User Avatar" className="avatar" />
               <div className="user-details">
-                <h3>User Name</h3>
-                <p>User Status</p>
+                <h3>👋Kasinathan</h3>
               </div>
             </div>
           </div>
