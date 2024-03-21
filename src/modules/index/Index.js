@@ -1,45 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./index.css";
 import Avatar from "./assets/9440461.jpg";
-import axios from 'axios';
-import { BASE_URL } from '../../services/baseURL';
-
+import axios from "axios";
+import { BASE_URL } from "../../services/baseURL";
+import { FaMicrophone } from "react-icons/fa";
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
 function Index() {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+
+  const {
+    transcript,
+    listening,
+    browserSupportsSpeechRecognition
+  } = useSpeechRecognition();
+
+  if (!browserSupportsSpeechRecognition) {
+    alert("Browser does not support speech to text");
+  }
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
   };
 
-
   const sendMessage = async () => {
-    if (message.trim() !== '') {
-      setLoading(true); // Show loading animation
+    if (message.trim() !== "") {
+      setLoading(true);
 
       try {
-        // Log the URL being used for the axios request
-        const response = await axios.post(`${BASE_URL}/openAi`, { prompt: message });
+        const response = await axios.post(`${BASE_URL}/openAi`, {
+          prompt: message,
+        });
         if (response.status === 200) {
           const botResponse = response.data.botResponse;
-          // Append both sent and bot's response messages to the message list
-          setMessages([...messages, { text: message, sender: 'user' }, { text: botResponse, sender: 'bot' }]);
+          setMessages([
+            ...messages,
+            { text: message, sender: "user" },
+            { text: botResponse, sender: "bot" },
+          ]);
         } else {
-          console.error('Failed to get bot response');
+          console.error("Failed to get bot response");
         }
       } catch (error) {
-        console.error('Failed to get bot response:', error.message);
+        console.error("Failed to get bot response:", error.message);
       } finally {
-        setLoading(false); // Hide loading animation
+        setLoading(false);
       }
     }
-    setMessage(''); // Clear input field after sending message
+    setMessage("");
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       sendMessage();
     }
   };
@@ -48,15 +63,20 @@ function Index() {
     navigator.clipboard.writeText(text);
   };
 
+  const handleTranscript = () => {
+    setMessage(`"translate to malayalam "${transcript}`);
+    console.log(transcript);
+  };
+
   return (
-    <div className='container'>
-      <div className='main'>
-        <div className='left'>
-          <div className='list'>
+    <div className="container">
+      <div className="main">
+        <div className="left">
+          <div className="list">
             <h1>Dev-HUT 🧑‍💻</h1>
           </div>
-          <div className='list2'>
-            <div className='user'>
+          <div className="list2">
+            <div className="user">
               <img src={Avatar} alt="User Avatar" className="avatar" />
               <div className="user-details">
                 <h3>👋 Kasinathan</h3>
@@ -64,19 +84,24 @@ function Index() {
             </div>
           </div>
         </div>
-        <div className='right'>
-          <div className='chat'>
+        <div className="right">
+          <div className="chat">
             {messages.map((msg, index) => (
-              <div key={index} className={msg.sender === 'user' ? 'message sent' : 'message received'}>
+              <div
+                key={index}
+                className={
+                  msg.sender === "user" ? "message sent" : "message received"
+                }
+              >
                 {msg.text}
-                {msg.sender === 'bot' && (
-                  <button onClick={() => copyToClipboard(msg.text)}>Copy</button>
+                {msg.sender === "bot" && (
+                  <button onClick={() => copyToClipboard(msg.text)}>
+                    Copy
+                  </button>
                 )}
               </div>
             ))}
-            {loading && (
-              <div className='message sent'>Loading...</div>
-            )}
+            {loading && <div className="message sent">Loading...</div>}
           </div>
           <div className="chat-input">
             <input
@@ -86,7 +111,13 @@ function Index() {
               onChange={handleMessageChange}
               onKeyPress={handleKeyPress}
             />
-            <button onClick={sendMessage}>Send</button>
+            <div className="buttonss">
+              <button onClick={sendMessage}>Send</button>
+              <button onClick={SpeechRecognition.startListening}>
+                <FaMicrophone /> {listening ? "OFF" : "on"}
+              </button>
+              <button onClick={handleTranscript}>Send Transcript</button>
+            </div>
           </div>
         </div>
       </div>

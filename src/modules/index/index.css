@@ -14,13 +14,38 @@
 }
 
 .left {
+  height: auto;
+  justify-content: center;
   width: auto;
   padding: 20px;
   background-color: #172a3b;
   color: white;
 }
 
+.opt{
+  padding: 10px;
+  margin: auto;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.opt button{
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  background-color: #dfc8ea;
+  transition: 0.3s ease all;
+}
+
+.opt button:hover{
+  cursor: pointer;
+  background: #dda6f7;
+}
+
 .list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -41,14 +66,16 @@
 }
 
 .user {
+  display: flex;
   align-items: center;
   line-height: normal;
-  display: flex;
 }
 
 .user-details {
+  justify-content: center;
   padding: 15px;
 }
+
 
 .right {
   justify-content: center;
@@ -62,7 +89,7 @@
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 10px;
-  background: #333;
+  background: #22395c;
   width: 100%;
   height: calc(100% - 50px);
   overflow-y: scroll;
@@ -81,6 +108,9 @@
   border: 2px solid #172a3b;
   margin-right: 10px;
 }
+
+
+
 
 .chat-input button {
   background-color: #22395c;
@@ -112,19 +142,31 @@
   margin-top: 10px;
 }
 
+.message button:hover {
+  cursor: pointer;
+}
+
 .sent {
   display: flex;
   margin-left: auto;
   justify-content: flex-start;
   text-transform: capitalize;
-  background-color: #22395c;
+  background-color: #172a3b;
   color: white;
 }
 
 .received {
   background-color: #f0f0f0;
-  color: #333;
+  color: #22395c;
 }
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
   .main {
@@ -158,17 +200,28 @@
     padding: 0px;
     border-radius: 0px;
     width: 100%;
-    height: auto;
+    height: calc(100% - 100px);
     background: none;
     overflow-x: scroll;
+    
   }
 
   .chat-input {
     width: 100%;
-    height: auto;
-    margin: 0px;
-    position: absolute;
+    height: 100px;
+    margin-left: auto;
+    justify-content: center;
     display: flex;
+    flex-direction: column;
+    position: absolute;
+    right:auto;
     bottom: 20px;
+  }
+  
+  .buttonss{
+    display: flex;
+  }
+  .buttonss button{
+    margin: 10px;
   }
 }
