@@ -22,7 +22,7 @@ function Index() {
           setUsername(response.data.username);
         }
       } catch (error) {
-          console.log(response.message);
+          console.log("User info cant fetch");
       }
     } 
     UserInfo();
