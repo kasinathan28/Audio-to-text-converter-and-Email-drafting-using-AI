@@ -19,7 +19,6 @@ function Index() {
       try {
         const response = await axios.get(`${BASE_URL}/user/${userid}`);
         if (response.status == 200) {
-          console.log(response.data);
           setUsername(response.data);
         }
       } catch (error) {
