@@ -21,7 +21,6 @@ function Index() {
 
       try {
         // Log the URL being used for the axios request
-        console.log(`${BASE_URL}/openAi`);
         const response = await axios.post(`${BASE_URL}/openAi`, { prompt: message });
         if (response.status === 200) {
           const botResponse = response.data.botResponse;
