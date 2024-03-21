@@ -1,5 +1,3 @@
-/* Add viewport meta tag in HTML file */
-
 .container {
   display: flex;
   justify-content: center;
@@ -18,7 +16,7 @@
 .left {
   width: auto;
   padding: 20px;
-  background-color: #172A3B;
+  background-color: #172a3b;
   color: white;
 }
 
@@ -67,7 +65,7 @@
   background: #333;
   width: 100%;
   height: calc(100% - 50px);
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .chat-input {
@@ -80,7 +78,7 @@
   height: 40px;
   border-radius: 20px;
   padding: 0 20px;
-  border: 2px solid #172A3B;
+  border: 2px solid #172a3b;
   margin-right: 10px;
 }
 
@@ -130,24 +128,25 @@
 
 @media (max-width: 768px) {
   .main {
+    width: 100%;
     height: 100vh;
     flex-direction: column;
-    overflow: hidden;
+    overflow-x: hidden;
     border-radius: 0px;
   }
-  
+
   .list {
     padding-top: 10px;
     margin-bottom: 0px;
   }
-  
+
   .left {
-    width: 100%;
+    width: auto;
     height: auto;
     padding: 0px;
     padding-left: 20px;
   }
-  
+
   .right {
     padding: 0px;
     margin: 0px;
@@ -165,11 +164,11 @@
   }
 
   .chat-input {
-      width: 100%;
-      height: auto;
-      margin: 0px;
-      position: absolute;
-      display: flex;
-      bottom: 20px;
-    }
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    position: absolute;
+    display: flex;
+    bottom: 20px;
+  }
 }
