@@ -1,0 +1,64 @@
+.loginc{
+    width: 30vw;
+    margin: auto;
+    display: flex;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #fff;
+    color: #22395c;
+    box-shadow: 4px 8px 8px #fff;
+    flex-direction: column;
+}
+
+.cta{
+    width: 90%;
+    justify-content: center;
+    margin: auto;
+    gap: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.cta label{
+    font-size: 20px;
+    color: #22395c;
+}
+.cta input{
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    align-items: center;
+}
+
+.cta button{
+    width: 55%;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: none;
+    transition: 0.3s ease all;
+}
+
+.cta button:hover{
+    cursor: pointer;
+}
+
+.loginc p{
+    font-weight: 600;
+
+}
+.loginc span{
+    text-decoration: underline;
+}
+.loginc span:hover{
+    cursor: pointer;
+}
+
+
+@media  screen and (max-width:768px) {
+    .loginc{
+        width: 90vw;
+    }    
+}

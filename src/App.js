@@ -6,8 +6,8 @@ function App() {
   return (
     <Router>
     <Routes>
-      <Route path="/" element ={<Index/>}/>
-      <Route path="/auth" element ={<Auth/>}/>
+      <Route path="/" element ={<Auth/>}/>
+      <Route path="/index/:userid" element ={<Index/>}/>
     </Routes>
   </Router>
   );

@@ -1,15 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import Avatar from "./assets/9440461.jpg";
 import axios from "axios";
 import { BASE_URL } from "../../services/baseURL";
 import { FaMicrophone } from "react-icons/fa";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import { useParams } from "react-router-dom";
 
 function Index() {
+  const {userid} = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState();
+  
+  useEffect(()=>{
+    const UserInfo = async()=>{
+      try {
+        const response = await axios.get(`${BASE_URL}/user/${userid}`);
+        if (response.status == 200) {
+          setUsername(response.data.username);
+        }
+      } catch (error) {
+          console.log(response.message);
+      }
+    } 
+    UserInfo();
+  });
+
 
   const {
     transcript,
@@ -78,7 +96,7 @@ function Index() {
             <div className="user">
               <img src={Avatar} alt="User Avatar" className="avatar" />
               <div className="user-details">
-                <h3>👋 Kasinathan</h3>
+                <h3>👋{username}</h3>
               </div>
             </div>
           </div>

@@ -3,16 +3,86 @@
   width: 100%;
 }
 
-.authc .left1 {
+.left1,
+.right1 {
   width: 50%;
-  background: #000;
-  justify-content: center;
-  height: 100vh;
+  max-height: 100vh;
+  display: flex;
 }
 
-.authc .right1 {
-  width: 50%;
-  justify-content: center;
+.left1 {
+  background: #22395c;
+  color: #fff;
+}
+
+ .left1 h1 {
+  font-size: 88px;
+  margin-right: auto;
+  margin-left: 40px;
+  margin-top: 30%;
+}
+
+ .right1 {
   background: #dfc8ea;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
+.togglebtn {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.togglebtn button {
+  height: 100vh;
+  width: 50px;
+  background: #fff;
+  color: #22395c;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  white-space: nowrap;
+  letter-spacing: 20px;
+  align-items: center;
+  border: none;
+  font-weight: 600;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .authc {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left1 {
+    width: 100%;
+    text-align: center;
+    height: 150px;
+    justify-content: center;
+  }
+
+  .left1 h1{
+    margin: auto;
+    font-size: 28px;
+  }
+
+  .right1 {
+    margin: 0;
+    height: 75vh;
+    width: 100%;
+    padding:20px  0px;
+  }
+
+  .togglebtn button {
+    width: 100%;
+    height: 40px;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    letter-spacing: normal;
+    font-size: 18px;
+  }
+}
