@@ -116,7 +116,7 @@ function Index() {
               <button onClick={SpeechRecognition.startListening}>
                 <FaMicrophone /> {listening ? "OFF" : "on"}
               </button>
-              <button onClick={handleTranscript}>Send Transcript</button>
+              <button onClick={handleTranscript}>Transcript</button>
             </div>
           </div>
         </div>
