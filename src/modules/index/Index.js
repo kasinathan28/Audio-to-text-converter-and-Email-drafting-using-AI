@@ -10,7 +10,6 @@ function Index() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
 
   const {
     transcript,
