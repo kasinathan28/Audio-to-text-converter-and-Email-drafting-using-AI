@@ -1,0 +1,18 @@
+.authc {
+  display: flex;
+  width: 100%;
+}
+
+.authc .left1 {
+  width: 50%;
+  background: #000;
+  justify-content: center;
+  height: 100vh;
+}
+
+.authc .right1 {
+  width: 50%;
+  justify-content: center;
+  background: #dfc8ea;
+}
+
