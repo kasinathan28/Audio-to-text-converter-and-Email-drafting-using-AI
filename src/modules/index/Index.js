@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import "./index.css";
 import Avatar from "./assets/9440461.jpg";
 import axios from 'axios';
+import { BASE_URL } from '../../services/baseURL';
+
 
 function Index() {
   const [message, setMessage] = useState('');
@@ -12,12 +14,15 @@ function Index() {
     setMessage(event.target.value);
   };
 
+
   const sendMessage = async () => {
     if (message.trim() !== '') {
       setLoading(true); // Show loading animation
 
       try {
-        const response = await axios.post('http://localhost:5000/openAi', { prompt: message });
+        // Log the URL being used for the axios request
+        console.log(`${BASE_URL}/openAi`);
+        const response = await axios.post(`${BASE_URL}/openAi`, { prompt: message });
         if (response.status === 200) {
           const botResponse = response.data.botResponse;
           // Append both sent and bot's response messages to the message list

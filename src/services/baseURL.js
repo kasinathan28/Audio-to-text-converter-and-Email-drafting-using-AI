@@ -1,2 +1,2 @@
-// export const BASE_URL = `http://localhost:5000`
-export const BASE_URL = `https://gpt-server-4rrh.onrender.com`
+// exports.BASE_URL = "http://localhost:5000";
+exports.BASE_URL = `https://gpt-server-4rrh.onrender.com`
