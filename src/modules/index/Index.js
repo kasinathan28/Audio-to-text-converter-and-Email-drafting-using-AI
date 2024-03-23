@@ -3,11 +3,9 @@ import "./index.css";
 import Avatar from "./assets/9440461.jpg";
 import axios from "axios";
 import { BASE_URL } from "../../services/baseURL";
-import { FaMicrophone } from "react-icons/fa";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
+
 import { useNavigate, useParams } from "react-router-dom";
+import Speak from "../speak/Speak";
 
 function Index() {
   const { userid } = useParams();
@@ -15,6 +13,7 @@ function Index() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState();
+  const [selectedOption, setSelectedOption] = useState("chat");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,18 +28,19 @@ function Index() {
       }
     };
     UserInfo();
-  });
+  }, [userid]);
 
   const logout = () => {
     navigate("/");
   };
 
-  const { transcript, listening, browserSupportsSpeechRecognition } =
-    useSpeechRecognition();
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
 
-  if (!browserSupportsSpeechRecognition) {
-    alert("Browser does not support speech to text");
-  }
+
+
+
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -103,46 +103,58 @@ function Index() {
               </div>
             </div>
           </div>
+          <div className="opt">
+            <ul>
+              <li onClick={() => handleOptionSelect("chat")}>Chat</li>
+              <li onClick={() => handleOptionSelect("translate")}>Translate</li>
+              <li onClick={() => handleOptionSelect("email")}>Draft Email</li>
+            </ul>
+          </div>
           <div className="logout">
-              <button onClick={logout}>Logout</button>
-            </div>
+            <button onClick={logout}>Logout</button>
+          </div>
         </div>
 
         <div className="right">
-          <div className="chat">
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                className={
-                  msg.sender === "user" ? "message sent" : "message received"
-                }
-              >
-                {msg.text}
-                {msg.sender === "bot" && (
-                  <button onClick={() => copyToClipboard(msg.text)}>
-                    Copy
-                  </button>
-                )}
+          {selectedOption === "chat" && (
+            <div className="chat-container">
+              <div className="chat">
+                {messages.map((msg, index) => (
+                  <div
+                    key={index}
+                    className={
+                      msg.sender === "user"
+                        ? "message sent"
+                        : "message received"
+                    }
+                  >
+                    {msg.text}
+                    {msg.sender === "bot" && (
+                      <button onClick={() => copyToClipboard(msg.text)}>
+                        Copy
+                      </button>
+                    )}
+                  </div>
+                ))}
+                {loading && <div className="message sent">Loading...</div>}
               </div>
-            ))}
-            {loading && <div className="message sent">Loading...</div>}
-          </div>
-          <div className="chat-input">
-            <input
-              type="text"
-              placeholder="Type a message..."
-              value={message}
-              onChange={handleMessageChange}
-              onKeyPress={handleKeyPress}
-            />
-            <div className="buttonss">
-              <button onClick={sendMessage}>Send</button>
-              <button onClick={SpeechRecognition.startListening}>
-                <FaMicrophone /> {listening ? "OFF" : "on"}
-              </button>
-              <button onClick={handleTranscript}>Transcript</button>
+              <div className="chat-input">
+                <input
+                  type="text"
+                  placeholder="Type a message..."
+                  value={message}
+                  onChange={handleMessageChange}
+                  onKeyPress={handleKeyPress}
+                />
+                <div className="buttonss">
+                  <button onClick={sendMessage}>Send</button>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
+
+          {selectedOption === "translate" && <div><Speak/></div>}
+          {selectedOption === "email" && <div>Email Component</div>}
         </div>
       </div>
     </div>
