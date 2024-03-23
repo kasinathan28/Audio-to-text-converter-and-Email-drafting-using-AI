@@ -3,9 +3,9 @@ import "./index.css";
 import Avatar from "./assets/9440461.jpg";
 import axios from "axios";
 import { BASE_URL } from "../../services/baseURL";
-
 import { useNavigate, useParams } from "react-router-dom";
 import Speak from "../speak/Speak";
+import DraftEmail from "../email/DraftEmail";
 
 function Index() {
   const { userid } = useParams();
@@ -37,10 +37,6 @@ function Index() {
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
-
-
-
-
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -83,10 +79,6 @@ function Index() {
     navigator.clipboard.writeText(text);
   };
 
-  const handleTranscript = () => {
-    setMessage(`"translate to malayalam "${transcript}`);
-    console.log(transcript);
-  };
 
   return (
     <div className="container">
@@ -153,8 +145,14 @@ function Index() {
             </div>
           )}
 
-          {selectedOption === "translate" && <div><Speak/></div>}
-          {selectedOption === "email" && <div>Email Component</div>}
+          {selectedOption === "translate" && (
+            <div>
+              <Speak />
+            </div>
+          )}
+          {selectedOption === "email" && <div>
+            <DraftEmail/>
+              </div>}
         </div>
       </div>
     </div>
