@@ -5,7 +5,7 @@ import axios from 'axios';
 import "./speak.css";
 import { BASE_URL } from "../../services/baseURL";
 
-function Speak({ handleMessageChange, handleTranscript }) {
+function Speak() {
   const [selectedFromLanguage, setSelectedFromLanguage] = useState("en");
   const [selectedToLanguage, setSelectedToLanguage] = useState("en");
   const { transcript, listening, browserSupportsSpeechRecognition } =
