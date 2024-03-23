@@ -79,13 +79,14 @@
 .opt ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 0px  10px;
   transition: 0.2s ease all;
 }
 
 .opt li {
   padding: 10px;
   cursor: pointer;
+  margin: 4px 0px;
   border-radius: 8px;
 }
 
@@ -93,6 +94,12 @@
   color: #172a3b;
   background-color: #f0f0f0;
 }
+
+.opt ul li.active {
+  background-color: #4caf50;
+  color: white;
+}
+
 
 .logout{
   width: 100%;
@@ -273,5 +280,13 @@
     margin-left: auto;
     margin-right: 10px;
     margin-bottom: 20px;
+  }
+}
+
+
+@media screen and (max-width:768px) {
+  .opt li{
+    width: 80%;
+    margin-left: -20px;
   }
 }

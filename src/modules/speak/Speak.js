@@ -45,10 +45,7 @@ function Speak() {
   return (
     <div className="smain">
       <div className="speak-container">
-        <button onClick={startListening}>
-          <FaMicrophone /> {listening ? "OFF" : "on"}
-        </button>
-        <button onClick={translateText}>Translate</button>
+       
         <p>From</p>
         <select value={selectedFromLanguage} onChange={handleFromLanguageChange}>
           <option value="en">English</option>
@@ -61,6 +58,10 @@ function Speak() {
           <option value="ml">Malayalam</option>
           <option value="hi">Hindi</option>
         </select>
+        <button onClick={startListening}>
+          <FaMicrophone /> {listening ? "OFF" : "on"}
+        </button>
+        <button onClick={translateText}>Translate</button>
       </div>
       <div className="transcript">{transcript}</div>
       <div className="translated-text">{translatedText}</div>

@@ -1,46 +1,57 @@
-.smain{
-    display: flex;
-    flex-direction: column;
+.smain {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
-.speak-container {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-  
-  .speak-container select {
-    margin-right: 10px;
-    padding: 8px;
-    border-radius: 5px;
-  }
-  
-  .speak-container button {
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .speak-container button:hover {
-    background-color: #e0e0e0;
-  }
-  
 
-.transcript {
+.speak-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.speak-container select {
+  margin-right: 10px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.speak-container button {
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.speak-container button:hover {
+  background-color: #e0e0e0;
+}
+
+.transcript,
+.translated-text {
+  margin-top: 20px;
+  padding: 10px;
+  background: #172a3b;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.translated-text{
+  background: #fff;
+  color: #172a3b;
+}
+
+@media screen and (max-width: 768px) {
+  .speak-container{
     margin-top: 20px;
-    padding: 10px;
-    background: #172a3b;
-    color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 50%;
-  }
-  
-  .translated-text {
-    margin-top: 20px;
-    padding: 10px;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 50%;
-  }
+    justify-content: center;
+    display: flex;
+    gap: 25px;
+  }  
+
+}

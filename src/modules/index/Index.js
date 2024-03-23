@@ -79,7 +79,6 @@ function Index() {
     navigator.clipboard.writeText(text);
   };
 
-
   return (
     <div className="container">
       <div className="main">
@@ -97,9 +96,24 @@ function Index() {
           </div>
           <div className="opt">
             <ul>
-              <li onClick={() => handleOptionSelect("chat")}>Chat</li>
-              <li onClick={() => handleOptionSelect("translate")}>Translate</li>
-              <li onClick={() => handleOptionSelect("email")}>Draft Email</li>
+              <li
+                className={selectedOption === "chat" ? "active" : ""}
+                onClick={() => handleOptionSelect("chat")}
+              >
+                Chat
+              </li>
+              <li
+                className={selectedOption === "translate" ? "active" : ""}
+                onClick={() => handleOptionSelect("translate")}
+              >
+                Translate
+              </li>
+              <li
+                className={selectedOption === "email" ? "active" : ""}
+                onClick={() => handleOptionSelect("email")}
+              >
+                Draft Email
+              </li>
             </ul>
           </div>
           <div className="logout">
@@ -150,9 +164,11 @@ function Index() {
               <Speak />
             </div>
           )}
-          {selectedOption === "email" && <div>
-            <DraftEmail/>
-              </div>}
+          {selectedOption === "email" && (
+            <div>
+              <DraftEmail />
+            </div>
+          )}
         </div>
       </div>
     </div>
