@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Dev Hut",
+  "name": "Developer hut with minimal usage of chatgpt",
   "icons": [
     {
       "src": "favicon.ico",
