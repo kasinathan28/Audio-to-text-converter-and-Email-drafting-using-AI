@@ -6,13 +6,11 @@
     text-align: center;
     border: 1px solid #fff;
     color: #22395c;
-    box-shadow: 4px 8px 8px #fff;
     flex-direction: column;
 }
 
 .cta{
     width: 90%;
-    justify-content: center;
     margin: auto;
     gap: 10px;
     text-align: left;
@@ -34,6 +32,7 @@
 .cta button{
     width: 55%;
     justify-content: center;
+    text-align: center;
     margin: 20px auto;
     padding: 8px 20px;
     border-radius: 10px;
@@ -58,7 +57,16 @@
 
 
 @media  screen and (max-width:768px) {
-    .loginc{
+    body{
+        background: #22395c;
+    }
+    .loginc {
+        position: relative;
         width: 90vw;
-    }    
+        margin-top: -60px;
+      }
+      
+    .cta label, h1 , span, p{
+        color: #fff;
+    }
 }

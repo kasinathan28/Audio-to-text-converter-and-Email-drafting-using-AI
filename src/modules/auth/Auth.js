@@ -13,11 +13,11 @@ function Auth() {
   return (
     <div className='authc'>
       <div className='left1'>
-        <h1>Sign up for the Dev-Hut.🧑‍💻</h1>
+        <h1>The Dev-Hut.🧑‍💻</h1>
       </div>
       <div className='togglebtn'>
         <button onClick={handleToggle} >
-          {showLogin ? 'Switch to Signup' : 'Switch to Login'}
+          {showLogin ? 'Switch to Signup👉🏻' : 'Switch to Login👉🏻'}
         </button>
       </div>
       <div className='right1'>

@@ -61,7 +61,7 @@
   .left1 {
     width: 100%;
     text-align: center;
-    height: 150px;
+    height: 100px;
     justify-content: center;
   }
 
@@ -74,11 +74,13 @@
     margin: 0;
     height: 75vh;
     width: 100%;
+    background: #22395c;
     padding:20px  0px;
   }
 
   .togglebtn button {
-    width: 100%;
+    width: 50%;
+    border-radius: 8px;
     height: 40px;
     writing-mode: horizontal-tb;
     text-orientation: mixed;

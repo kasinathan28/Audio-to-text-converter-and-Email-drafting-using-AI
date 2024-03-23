@@ -4,36 +4,39 @@ import Avatar from "./assets/9440461.jpg";
 import axios from "axios";
 import { BASE_URL } from "../../services/baseURL";
 import { FaMicrophone } from "react-icons/fa";
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
-import { useParams } from "react-router-dom";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Index() {
-  const {userid} = useParams();
+  const { userid } = useParams();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [username, setUsername] = useState();
-  
-  useEffect(()=>{
-    const UserInfo = async()=>{
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const UserInfo = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/user/${userid}`);
-        if (response.status == 200) {
+        if (response.status === 200) {
           setUsername(response.data);
         }
       } catch (error) {
-          console.log("User info cant fetch");
+        console.log("User info cant fetch");
       }
-    } 
+    };
     UserInfo();
   });
 
+  const logout = () => {
+    navigate("/");
+  };
 
-  const {
-    transcript,
-    listening,
-    browserSupportsSpeechRecognition
-  } = useSpeechRecognition();
+  const { transcript, listening, browserSupportsSpeechRecognition } =
+    useSpeechRecognition();
 
   if (!browserSupportsSpeechRecognition) {
     alert("Browser does not support speech to text");
@@ -100,7 +103,11 @@ function Index() {
               </div>
             </div>
           </div>
+          <div className="logout">
+              <button onClick={logout}>Logout</button>
+            </div>
         </div>
+
         <div className="right">
           <div className="chat">
             {messages.map((msg, index) => (
