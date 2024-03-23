@@ -31,6 +31,7 @@
 
 .cta button{
     width: 55%;
+    display: flex;
     justify-content: center;
     text-align: center;
     margin: 20px auto;
@@ -39,6 +40,9 @@
     border: none;
     transition: 0.3s ease all;
 }
+
+
+
 
 .cta button:hover{
     cursor: pointer;
