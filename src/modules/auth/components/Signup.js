@@ -53,7 +53,6 @@ function Signup() {
           </button>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
-        {/* <p>Already have an account? <span>Login</span></p> */}
       </div>
     </div>
   );

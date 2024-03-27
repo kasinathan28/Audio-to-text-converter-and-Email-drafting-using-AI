@@ -61,7 +61,6 @@ function Login({ onLoginSuccess }) {
           </button>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
-        {/* <p>Don't have an account? <span>Signup</span></p> */}
       </div>
     </div>
   );
