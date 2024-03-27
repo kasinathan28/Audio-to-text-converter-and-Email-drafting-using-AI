@@ -23,15 +23,14 @@ function Signup() {
       
       // Check if signup was successful
       if (response.status === 200) {
-        navigate('/');
+        window.location.reload();
+        // setErrorMessage("Signup Success. You can login.")
       } else {
-        // Handle other status codes if needed
         setErrorMessage('Signup failed');
       }
     } catch (error) {
-      // Handle network errors or other errors
-      console.error('Error during signup:', error);
-      setErrorMessage('Error during signup');
+      console.log('Error during signup:', error);
+      setErrorMessage("Errod during signup");
     } finally {
       setLoading(false);
     }
